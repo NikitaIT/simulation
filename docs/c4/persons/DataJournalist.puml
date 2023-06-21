@@ -1,0 +1,4 @@
+@startuml SportRadar
+!include <C4/C4_Container>
+Person(DataJournalist, "Data Journalist", "5k+. A data journalist uses numerical data, digital information, and online analytics to discover and write stories. Through the use of technology and software programs, journalists can develop and include infographics and data visualizations to develop a report's narrative. Journalists use this analytical information as evidence to complement their investigations, uncover potential leads, and gain more extensive insight into a specific topic.")
+@enduml

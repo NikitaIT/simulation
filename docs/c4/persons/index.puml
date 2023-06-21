@@ -1,0 +1,6 @@
+@startuml SportRadar
+!include <C4/C4_Container>
+!include ./Bookmaker.puml!1
+!include ./Federation.puml!1
+!include ./DataJournalist.puml!1
+@enduml

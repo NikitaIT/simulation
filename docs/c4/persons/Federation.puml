@@ -1,0 +1,4 @@
+@startuml SportRadar
+!include <C4/C4_Container>
+Person(Federation, "Federation", "Sprot right owner. Event Scheduling, Management, Scoring System")
+@enduml

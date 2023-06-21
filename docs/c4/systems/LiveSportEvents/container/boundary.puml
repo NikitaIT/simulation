@@ -1,0 +1,26 @@
+@startuml SportRadar
+!include <C4/C4_Container>
+
+System_Boundary(LiveSportEvents, "Live Sport Events") {
+    ContainerDb(LiveDataStore, "Live Data Store", "InflexDB", "Live sport events. 40 sports, 20k event/month")
+    ContainerDb(PostMatchDataStore, "Live Data Store", "Postgress", "Post-match data.")
+
+    SystemQueue(LiveEventsQueue, "Kafka", "LiveEventsQueue")
+    Container(GameWorkflow, "Game Workflow", "nodejs", "Game Workflow")
+    Container(GameStepProducer, "Game Step Producer", "nodejs", "Game Step Producer")
+    
+    Container(LiveFederationProtocolAdapter, "Live Federation Protocol Adapter", "nodejs", "strictly defined API Spec + external system tests")
+    
+
+    Rel(GameWorkflow, GameStepProducer, "Run", "redis")
+    Rel(GameStepProducer, LiveDataStore, "Persist Live Events", "tcp")
+    Rel(GameStepProducer, PostMatchDataStore, "Persist Post-match data", "tcp")
+
+    Rel(GameWorkflow, LiveFederationProtocolAdapter, "Subscribe", "WS/ZMQ")
+
+    Rel(LiveDataStore, LiveEventsQueue, "Produce", "kafka")
+}
+
+Rel(LiveFederationProtocolAdapter, FederationSystem, "Subscribe", "HTTP/REST/WS/ZMQ")
+
+@enduml

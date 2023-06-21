@@ -1,0 +1,8 @@
+@startuml SportRadar
+!include <C4/C4_Container>
+
+!include ../../FederationSystem/gateway.puml!1
+!include ../../../persons/DataJournalist.puml!1
+!include ./boundary.puml!1
+
+@enduml

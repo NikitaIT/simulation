@@ -18,5 +18,9 @@
   "plantuml.server": "http://localhost:8089",
   "[plantuml]": {
     "editor.defaultFormatter": "jebbs.plantuml"
-  }
+  },
+  "jest.virtualFolders": [{ "name": "e2e", "autoRun": "off" }],
+  "jest.autoRun": { "watch": false, "onSave": "test-only" },
+  "jest.showCoverageOnLoad": true,
+  "jest.disabledWorkspaceFolders": ["e2e"]
 }

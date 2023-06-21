@@ -1,0 +1,11 @@
+@startuml SportRadar
+!include <C4/C4_Container>
+
+System_Boundary(LiveStreaming, "Live Streaming") {
+    Container(VideoUploading, "Video Uploading", "nodejs", "")
+
+}
+Rel_U(Bookmaker, LiveStreaming, "")
+
+
+@enduml

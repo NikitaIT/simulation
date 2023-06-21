@@ -1,0 +1,10 @@
+@startuml SportRadar
+!include <C4/C4_Container>
+
+System_Boundary(FederationManagementPlatform, "Federation Management Platform") {
+
+    ContainerDb(HistoricalDataStore, "Historical Data Store", "CasandraDB", "Sport results. Post-match data.")
+ 
+}
+Rel_U(Federation, FederationManagementPlatform, "")
+@enduml

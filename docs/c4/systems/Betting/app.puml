@@ -1,0 +1,4 @@
+@startuml SportRadar
+!include <C4/C4_Container>
+System(Betting, "Betting (Trading)", "Generate trades", $link="./container/index.puml")
+@enduml

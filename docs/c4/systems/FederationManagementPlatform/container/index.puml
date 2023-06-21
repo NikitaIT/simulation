@@ -1,0 +1,7 @@
+@startuml SportRadar
+!include <C4/C4_Container>
+
+!include ../../../persons/Federation.puml!1
+!include ./boundary.puml!1
+
+@enduml

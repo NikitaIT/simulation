@@ -1,0 +1,4 @@
+@startuml SportRadar
+!include <C4/C4_Container>
+Person(DigitalSportPublisher, "DigitalSportPublisher", "Social Media, Broadcasters, Publishers, Sponsors & Brands, Clubs")
+@enduml

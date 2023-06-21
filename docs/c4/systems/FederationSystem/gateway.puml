@@ -1,0 +1,4 @@
+@startuml SportRadar
+!include <C4/C4_Container>
+System_Ext(FederationSystem, "Some Federation API", $link="./container/index.puml")
+@enduml

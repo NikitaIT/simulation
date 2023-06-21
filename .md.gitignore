@@ -1,0 +1,8 @@
+node_modules/
+dist
+tmp
+/out-tsc
+src
+scripts
+auth
+docs/plant-modules

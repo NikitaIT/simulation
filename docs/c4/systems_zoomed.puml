@@ -1,0 +1,43 @@
+@startuml SportRadar
+!include <C4/C4_Container>
+!include ./persons/index.puml!1
+' define tags
+' !include <office/Servers/database_server>
+' !include <office/Servers/file_server>
+' !include <office/Servers/application_server>
+' !include <office/Concepts/service_application>
+' !include <office/Concepts/firewall>
+
+' AddContainerTag("webApp", $sprite="application_server", $legendText="web app container")
+' AddContainerTag("db", $sprite="database_server", $legendText="database container")
+' AddContainerTag("files", $sprite="file_server", $legendText="file server container")
+' AddContainerTag("conApp", $sprite="service_application", $legendText="console app container")
+
+' !include ./systems/index.puml!1
+
+
+' Rel(LiveSportEvents, LiveStreaming, "stream")
+' Rel(LiveSportEvents, Betting, "stream")
+' Rel(LiveSportEvents, VirtualGaming, "stream")
+
+!include ./systems/Betting/container/boundary.puml
+!include ./systems/VirtualGaming/container/boundary.puml
+
+!include ./systems/FederationSystem/container/boundary.puml
+!include ./systems/LiveStreaming/container/boundary.puml
+!include ./systems/EventCreation/container/boundary.puml
+
+
+
+!include ./systems/LiveSportEvents/container/boundary.puml
+!include ./systems/FederationManagementPlatform/container/boundary.puml
+
+Rel(ScheduleWorkflow, GameWorkflow, "Run", "Kafka")
+
+Rel(LiveSportEvents, VirtualGaming, "Stats")
+Rel(LiveSportEvents, LiveStreaming, "Video/Results")
+Rel(LiveSportEvents, Betting, "Pre-match ODDS")
+
+SHOW_FLOATING_LEGEND()
+
+@enduml

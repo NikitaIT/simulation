@@ -1,6 +1,5 @@
 import Fastify, { FastifyInstance } from 'fastify';
 import { app } from './app';
-
 describe('GET /', () => {
   let server: FastifyInstance;
 
@@ -14,7 +13,7 @@ describe('GET /', () => {
       method: 'GET',
       url: '/',
     });
-
-    expect(response.json()).toEqual({ message: 'Hello API' });
+    console.log(process.env);
+    expect(response.json()).toEqual({ hello: 'world' });
   });
 });

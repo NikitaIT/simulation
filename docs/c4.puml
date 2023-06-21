@@ -1,0 +1,93 @@
+@startuml SportRadar
+!include <C4/C4_Container>
+
+Person(Federation, "Federation", "Sprot right owner. Event Scheduling, Management, Scoring System")
+Person(DataJournalist, "Data Journalist", "5k+. A data journalist uses numerical data, digital information, and online analytics to discover and write stories. Through the use of technology and software programs, journalists can develop and include infographics and data visualizations to develop a report's narrative. Journalists use this analytical information as evidence to complement their investigations, uncover potential leads, and gain more extensive insight into a specific topic.")
+Person(Bookmaker, "Bookmaker", "Retail & Online")
+
+System_Boundary(Federation, "Some Federation Type") {
+   System_Ext(FederationAPI, "Internal API", "Provides live events, schedule, scores")
+}
+
+System_Ext(Betting, "Betting (Trading)", "Generate trades") {
+    
+}
+
+System_Boundary(LiveStreaming, "Live Streaming") {
+    Container(VideoUploading, "Video Uploading", "nodejs", "")
+
+}
+System_Boundary(VirtualGaming, "Virtual Gaming") {
+
+}
+
+Rel(LiveSportEvents, LiveStreaming, "stream")
+Rel(LiveSportEvents, Betting, "stream")
+Rel(LiveSportEvents, VirtualGaming, "stream")
+
+
+System_Boundary(EventCreation, "Event Creation") {
+    Container(FederationProtocolAdapter, "Federation Protocol Adapter", "nodejs", "strictly defined API Spec + external system tests")
+    Container(GameProducer, "Game Producer", "nodejs", "Game Producer")
+
+    Container(ScheduleWorkflow, "Schedule Workflow", "nodejs", "Schedule Workflow")
+    Container(AI, "Odds & Predictions", "pytorch", "Predict")
+    ContainerDb(EventDataStore, "Event Data Store", "CasandraDB", "Scheduled sport events. Pre-match data. 40 sports, 300k event/year")
+    
+    Container(PredefinedScheduleWorkflow, "Predefined Schedule Workflow", "nodejs", "Schedule Workflow")
+    ContainerDb(ScheduleStore, "Schedule Store", "bpmn store", "")
+    Rel(PredefinedScheduleWorkflow, ScheduleStore, "Write", "tcp")
+
+    Rel(FederationProtocolAdapter, FederationAPI, "Subscribe", "HTTP/REST/WS/ZMQ")
+    Rel(GameProducer, FederationProtocolAdapter, "Subscribe", "WS/ZMQ")
+    Rel(GameProducer, EventDataStore, "Persist Subscribe and Subscribed Events", "tcp")
+    Rel(ScheduleWorkflow, GameProducer, "Plan", "IPC")
+    Rel(AI, EventDataStore, "Read schedule", "tcp")
+    Rel(AI, ScheduleStore, "Adapt schedule (set estimated time)", "tcp")
+    Rel(ScheduleWorkflow, ScheduleStore, "Read predefined strategy", "tcp")
+
+}
+
+
+Rel(DataJournalist, PredefinedScheduleWorkflow, "create events, connect with data source", "REST, ws")
+
+System_Boundary(LiveSportEvents, "Live Sport Events") {
+    ContainerDb(LiveDataStore, "Live Data Store", "CasandraDB", "Live sport events. Pre-match data. 40 sports, 20k event/month")
+    SystemQueue(LiveEventsQueue, "Kafka", "LiveEventsQueue")
+    Container(GameWorkflow, "Game Workflow", "nodejs", "Game Workflow")
+    Container(GameStepProducer, "Game Step Producer", "nodejs", "Game Step Producer")
+    
+    Container(LiveFederationProtocolAdapter, "Live Federation Protocol Adapter", "nodejs", "strictly defined API Spec + external system tests")
+    
+    Rel(LiveFederationProtocolAdapter, FederationAPI, "Subscribe", "HTTP/REST/WS/ZMQ")
+
+    Rel(GameWorkflow, GameStepProducer, "Run", "redis")
+    Rel(GameStepProducer, LiveDataStore, "Persist Live Events", "tcp")
+
+    Rel(GameWorkflow, LiveFederationProtocolAdapter, "Subscribe", "WS/ZMQ")
+
+    Rel(LiveDataStore, LiveEventsQueue, "Produce", "kafka")
+}
+
+Rel(ScheduleWorkflow, GameWorkflow, "Run", "Kafka")
+
+System_Boundary(FederationManagementPlatform, "Federation Management Platform") {
+
+    Container(containerAlias, "Label", "Technology", "Optional Description")
+    
+    ContainerDb(HistoricalDataStore, "Historical Data Store", "CasandraDB", "Sport results. Post-match data.")
+
+    System(systemAlias, "Label", "Optional 3Description") 
+
+    System_Ext(extSystemAlias, "Label", "Optional Description")
+
+    Rel(personAlias, containerAlias, "Label", "Optional Technology")
+
+    Rel_U(systemAlias, extSystemAlias, "Label", "Optional Technology")
+}
+
+System_Boundary(FederationManagementPlatform, "Fraud Detection") {
+
+}
+
+@enduml

@@ -1,0 +1,8 @@
+@startuml SportRadar
+!include <C4/C4_Container>
+
+System_Boundary(FederationSystem, "Some Federation Type") {
+   System_Ext(FederationAPI, "Internal API", "Provides live events, schedule, scores")
+}
+
+@enduml

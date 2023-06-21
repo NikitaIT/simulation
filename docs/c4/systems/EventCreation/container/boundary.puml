@@ -1,0 +1,35 @@
+@startuml SportRadar
+!include <C4/C4_Container>
+
+System_Boundary(EventCreation, "Event Creation") {
+    Container(EventCreationWebApp, "WebApp", "react", "")
+
+    Container(FederationProtocolAdapter, "Federation Protocol Adapter", "nodejs", "strictly defined API Spec + external system tests")
+    Container(GameProducer, "Game Producer", "nodejs", "Game Producer")
+
+    Container(ScheduleWorkflow, "Schedule Workflow", "nodejs", "Schedule Workflow")
+    Container(AI, "Odds & Predictions", "pytorch", "Predict")
+    ContainerDb(EventDataStore, "Event Data Store", "CasandraDB", "Scheduled sport events. Pre-match data. 40 sports, 300k event/year")
+    ContainerDb(ModelsDataStore, "Models Data Store", "S3", "")
+
+    Container(PredefinedScheduleWorkflow, "Predefined Schedule Workflow", "nodejs", "Schedule Workflow")
+    ContainerDb(ScheduleStore, "Schedule Store", "bpmn store", "")
+    Rel(PredefinedScheduleWorkflow, ScheduleStore, "Write", "tcp")
+    
+    Rel(EventCreationWebApp, ScheduleWorkflow, "", "")
+
+    Rel(FederationProtocolAdapter, FederationSystem, "Subscribe", "HTTP/REST/WS/ZMQ")
+    Rel(GameProducer, FederationProtocolAdapter, "Subscribe", "WS/ZMQ")
+    Rel(GameProducer, EventDataStore, "Persist Subscribe and Subscribed Events", "tcp")
+    Rel(ScheduleWorkflow, GameProducer, "Plan", "IPC")
+    Rel(AI, EventDataStore, "Read schedule", "tcp")
+    Rel(AI, ModelsDataStore, "Write models", "tcp")
+    Rel(AI, ScheduleStore, "Adapt schedule (set estimated time)", "tcp")
+    Rel(ScheduleWorkflow, ScheduleStore, "Read predefined strategy", "tcp")
+
+}
+
+Rel(DataJournalist, EventCreationWebApp, "create events, connect with data source", "REST, ws")
+
+
+@enduml

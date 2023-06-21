@@ -1,0 +1,9 @@
+@startuml SportRadar
+!include <C4/C4_Container>
+
+
+System_Boundary(FraudDetection, "Fraud Detection") {
+
+}
+
+@enduml

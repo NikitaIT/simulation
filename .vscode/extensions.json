@@ -3,6 +3,18 @@
     "nrwl.angular-console",
     "esbenp.prettier-vscode",
     "firsttris.vscode-jest-runner",
-    "dbaeumer.vscode-eslint"
+    "dbaeumer.vscode-eslint",
+    "Orta.vscode-jest",
+    "firsttris.vscode-jest-runner",
+    "kisstkondoros.vscode-codemetrics",
+    "vivaxy.vscode-conventional-commits",
+    "IronGeek.vscode-env",
+    "jebbs.plantuml",
+    "redhat.vscode-yaml",
+    "unifiedjs.vscode-mdx",
+    "DavidAnson.vscode-markdownlint",
+    "yzhang.markdown-all-in-one",
+    "ms-azuretools.vscode-docker",
+    "ms-vscode-remote.remote-containers"
   ]
 }

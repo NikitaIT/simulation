@@ -1,0 +1,4 @@
+@startuml SportRadar
+!include <C4/C4_Container>
+System(LiveStreaming, "Live Streaming", "Streaming media simultaneously recorded and broadcast over the internet in real-time or near real-time. Non-live media such as video-on-demand, vlogs, and videos are technically streamed, but not live-streamed.", $link="./container/index.puml")
+@enduml

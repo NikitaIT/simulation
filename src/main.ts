@@ -1,12 +1,36 @@
 import Fastify from 'fastify';
 import { app } from './app/app';
+import 'dotenv/config';
 
 const host = process.env.HOST ?? 'localhost';
 const port = process.env.PORT ? Number(process.env.PORT) : 3000;
 
+const envToLogger = {
+  development: {
+    transport: {
+      target: 'pino-pretty',
+      options: {
+        translateTime: 'HH:MM:ss Z',
+        ignore: 'pid,hostname',
+      },
+    },
+  },
+  production: true,
+  test: {
+    transport: {
+      target: 'pino-pretty',
+      options: {
+        translateTime: 'HH:MM:ss Z',
+        ignore: 'pid,hostname',
+      },
+    },
+  },
+  //test: false, should be false?
+};
+
 // Instantiate Fastify with some config
 const server = Fastify({
-  logger: true,
+  logger: envToLogger[process.env.NODE_ENV] ?? true,
 });
 
 // Register your application as a normal plugin.

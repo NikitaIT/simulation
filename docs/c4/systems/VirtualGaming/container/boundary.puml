@@ -1,0 +1,9 @@
+@startuml SportRadar
+!include <C4/C4_Container>
+
+!include ../gateway.puml!1
+
+Rel_U(Bookmaker, VirtualGaming, "")
+
+
+@enduml

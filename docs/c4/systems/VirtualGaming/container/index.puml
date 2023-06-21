@@ -1,0 +1,8 @@
+@startuml SportRadar
+!include <C4/C4_Container>
+
+System_Boundary(VirtualGaming, "Virtual Gaming") {
+
+}
+
+@enduml

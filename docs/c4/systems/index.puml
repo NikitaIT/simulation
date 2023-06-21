@@ -1,0 +1,40 @@
+@startuml SportRadar
+!include <C4/C4_Container>
+
+!include ./FederationSystem/gateway.puml!1
+!include ./LiveStreaming/app.puml!1
+!include ./VirtualGaming/gateway.puml!1
+!include ./LiveSportEvents/app.puml!1
+!include ./FederationManagementPlatform/app.puml!1
+!include ./FraudDetection/gateway.puml!1
+!include ./EventCreation/app.puml!1
+!include ./Betting/gateway.puml!1
+
+!include ../persons/index.puml!1
+
+Rel_U(EventCreation, FederationSystem, "collect data from")
+Rel_U(LiveSportEvents, FederationSystem, "collect data from")
+
+Rel_R(EventCreation, LiveSportEvents, "manage")
+
+Rel(LiveSportEvents, VirtualGaming, "Stats")
+Rel(LiveSportEvents, LiveStreaming, "Video/Results")
+Rel(LiveSportEvents, Betting, "Pre-match ODDS")
+Rel_U(Bookmaker, VirtualGaming, "")
+Rel_U(Bookmaker, LiveStreaming, "")
+Rel_U(Bookmaker, Betting, "")
+
+Rel(LiveSportEvents, FederationManagementPlatform, "Stats&Results")
+
+Rel_R(FederationManagementPlatform, FraudDetection, "Alerts")
+
+Rel_U(Federation, FederationManagementPlatform, "")
+Rel_U(Federation, FraudDetection, "")
+
+
+Rel(DataJournalist, EventCreation, "Setup schedule")
+
+
+SHOW_FLOATING_LEGEND()
+
+@enduml
