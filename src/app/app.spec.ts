@@ -13,7 +13,6 @@ describe('GET /', () => {
       method: 'GET',
       url: '/',
     });
-    console.log(process.env);
     expect(response.json()).toEqual({ hello: 'world' });
   });
 });
