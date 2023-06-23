@@ -11,6 +11,8 @@ import { useInMemoryData } from './useInMemoryData';
 
 export default async function (
   fastify: FastifyInstance,
+  opt: any,
+  next: any,
   config: MatchSimulationJobConfig = {
     intervalSec: 10,
     timeoutSec: 90,
