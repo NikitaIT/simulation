@@ -15,7 +15,8 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@./auth": ["auth/src/index.ts"]
+      "@./auth": ["auth/src/index.ts"],
+      "@./framework": ["framework/src/index.ts"]
     },
     "esModuleInterop": true
   },
