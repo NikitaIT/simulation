@@ -23,4 +23,15 @@ declare global {
   type Headers = HeadersType;
   type Request = RequestType;
   type Response = ResponseType;
+
+  // eslint-disable-next-line @typescript-eslint/no-empty-interface
+  interface AbortSignal {
+    addEventListener(
+      eventName: string,
+      listener: (...args: any[]) => void,
+      opts?: {
+        once: boolean;
+      }
+    ): any;
+  }
 }
