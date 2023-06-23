@@ -62,7 +62,7 @@ export class MatchSimulationJob {
         ac.abort();
         return;
       }
-      const nextGoalTeam = randomInt(0, 1) as 1 | 0;
+      const nextGoalTeam = randomInt(0, 2) as 1 | 0;
       simulation.incCurrentTime(intervalSec);
       simulation.goal(nextGoalTeam);
       this.log.info(
