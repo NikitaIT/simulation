@@ -15,8 +15,6 @@ const envToFlagRecord = (env: unknown) =>
 OpenFeature.setProvider(new InMemoryProvider(envToFlagRecord(env)));
 const client = OpenFeature.getClient();
 
-client;
-
 // const showWelcomeMessage = await client.getBooleanValue(
 //   'welcome-message',
 //   false

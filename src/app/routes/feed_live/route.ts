@@ -4,7 +4,7 @@ import { FastifyInstance, FastifyRequest, FastifyReply } from 'fastify';
 export default async function (fastify: FastifyInstance) {
   fastify.route({
     method: 'GET',
-    url: '/feed_live',
+    url: '/',
     handler: (request: FastifyRequest, reply: FastifyReply) => {
       // this will handle http requests
       reply.send({ msg: 'This endpoint provides feed_live data' });

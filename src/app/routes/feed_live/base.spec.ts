@@ -7,7 +7,7 @@ import WebSocket from 'ws';
 import { once } from 'node:events';
 import { Duplex } from 'node:stream';
 import route from './route';
-describe('lp', () => {
+describe('feed live', () => {
   let fastify: FastifyInstance;
   let con: SocketStream;
   let client: Duplex;
@@ -24,7 +24,7 @@ describe('lp', () => {
     await fastify.listen({ port: 0 /* 0 means any port*/ });
 
     const ws = new WebSocket(
-      'ws://localhost:' + (fastify.server.address() as any).port + '/feed_live'
+      'ws://localhost:' + (fastify.server.address() as any).port + '/'
     );
 
     client = WebSocket.createWebSocketStream(ws, { encoding: 'utf8' });
