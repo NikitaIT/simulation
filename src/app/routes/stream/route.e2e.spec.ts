@@ -57,7 +57,7 @@ describe('Route E2E', () => {
 
     await fastify.register(websocketPlugin);
     // await route(fastify);
-    await route(fastify, {
+    await route(fastify, null, null, {
       intervalSec: 0.1,
       timeoutSec: 0.9,
     });
