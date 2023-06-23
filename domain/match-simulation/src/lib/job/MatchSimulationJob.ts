@@ -2,18 +2,16 @@ import { randomInt } from 'crypto';
 import { delay, timeout } from '@./utils';
 import { MatchSimulation } from '../entity';
 import { Logger } from '@./framework';
-
+import { setMaxListeners } from 'node:events';
+export type MatchSimulationJobConfig = {
+  intervalSec: number;
+  timeoutSec: number;
+};
 // todo: use generators, persist ac in job context
 export class MatchSimulationJob {
   constructor(
     private log: Logger,
-    private config: {
-      intervalSec: number;
-      timeoutSec: number;
-    } = {
-      intervalSec: 10,
-      timeoutSec: 90,
-    },
+    private config: MatchSimulationJobConfig,
     private now: () => number = () => Date.now()
   ) {}
   async start(simulation: MatchSimulation) {
