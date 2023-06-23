@@ -6,6 +6,7 @@
     "start": "nx serve",
     "build": "nx build",
     "test": "nx test",
+    "all-tests": "nx run-many --all --target=test",
     "docs-local": "npx puml-for-markdown -s http://localhost:8089 -i ./.md.gitignore -d --image-formats svg"
   },
   "private": true,
@@ -22,6 +23,7 @@
     "fastify": "~4.18.0",
     "fastify-plugin": "~4.5.0",
     "lint-staged": "^13.2.2",
+    "pino-pretty": "^10.0.0",
     "stream-json": "^1.8.0",
     "tslib": "^2.3.0",
     "ws": "^8.13.0"
