@@ -69,7 +69,7 @@ export class MatchSimulationJob {
         `Goal created with currentTimeSec=${simulation.currentTimeSec}`
       );
 
-      if (simulation.currentTimeSec >= timeoutSec) {
+      if (Math.abs(simulation.currentTimeSec - timeoutSec) <= 0.0001) {
         this.log.info(
           `simulation.currentTimeSec=${simulation.currentTimeSec} expired by timeoutSec=${timeoutSec}`
         );
