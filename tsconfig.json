@@ -16,6 +16,7 @@
     "baseUrl": ".",
     "paths": {
       "@./auth": ["auth/src/index.ts"],
+      "@./domain/match-simulation": ["domain/match-simulation/src/index.ts"],
       "@./framework": ["framework/src/index.ts"]
     },
     "esModuleInterop": true
