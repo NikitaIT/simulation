@@ -44,6 +44,8 @@ export class MatchSimulationJob {
     );
 
     const ac = new AbortController();
+    const maxIntervals = 100;
+    setMaxListeners(maxIntervals, ac.signal);
 
     simulation.renewAC(ac); // hack instead of concurrent state, should be replaced with events
 
