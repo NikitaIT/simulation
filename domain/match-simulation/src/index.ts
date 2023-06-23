@@ -1,1 +1,1 @@
-export * from './lib/domain-match-simulation';
+export * from './lib';
