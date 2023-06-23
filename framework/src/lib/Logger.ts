@@ -1,5 +1,5 @@
 export class FakeLogger implements Logger {
-  level: '';
+  level = '';
   fatal() {
     //
   }
