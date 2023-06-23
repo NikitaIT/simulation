@@ -10,12 +10,13 @@ export class MatchSimulation extends AggregateRoot {
   constructor(
     public readonly homeTeam: Team,
     public readonly externalTeam: Team,
+    id: number | string = 0,
     private readonly score: [number, number] = [0, 0],
     public startTime: number = 0,
     public isStarted: boolean = false,
     private _currentTimeSec: number = 0
   ) {
-    super();
+    super(id);
   }
 
   start(startTime: number) {
