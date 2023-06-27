@@ -1,7 +1,7 @@
-import { delay } from '@./utils';
+import { delay } from '@nba-node/utils';
 import { MatchSimulation, Team } from '../entity';
 import { MatchSimulationJob } from './MatchSimulationJob';
-import { FakeLogger } from '@./framework';
+import { FakeLogger } from '@nba-node/framework';
 import { Goal } from '../event';
 
 describe('Given MatchSimulationJob', () => {

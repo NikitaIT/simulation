@@ -10,7 +10,7 @@
       "defaultConfiguration": "production",
       "options": {
         "platform": "node",
-        "outputPath": "dist",
+        "outputPath": "dist/nba-node",
         "format": ["cjs"],
         "bundle": false,
         "main": "src/main.ts",
@@ -41,14 +41,14 @@
       "executor": "@nx/js:node",
       "defaultConfiguration": "development",
       "options": {
-        "buildTarget": ".:build"
+        "buildTarget": "nba-node:build"
       },
       "configurations": {
         "development": {
-          "buildTarget": ".:build:development"
+          "buildTarget": "nba-node:build:development"
         },
         "production": {
-          "buildTarget": ".:build:production"
+          "buildTarget": "nba-node:build:production"
         }
       }
     },
@@ -75,8 +75,9 @@
     },
     "docker-build": {
       "dependsOn": ["build"],
-      "command": "docker build -f Dockerfile . -t ."
+      "command": "docker build -f Dockerfile . -t nba-node"
     }
   },
-  "tags": []
+  "tags": [],
+  "implicitDependencies": ["domain-match-simulation"]
 }

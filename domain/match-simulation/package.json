@@ -1,4 +1,4 @@
 {
-  "name": "@./domain/match-simulation",
+  "name": "@nba-node/domain/match-simulation",
   "version": "0.0.1"
 }

@@ -1,7 +1,7 @@
 import { Either, left } from '@sweet-monads/either';
 import { MatchSimulationJob } from '../../job/MatchSimulationJob';
 import { MatchSimulationsRepository } from '../../repository/MatchSimulationsRepository';
-import { BaseCommand, CommandHandler, Logger } from '@./framework';
+import { BaseCommand, CommandHandler, Logger } from '@nba-node/framework';
 
 export interface RestartArgs {
   matchIds: string[];

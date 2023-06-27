@@ -7,6 +7,14 @@ E2E-like Test with small timeouts: `src/app/routes/start/route.e2e.spec.ts`
 
 P.S. for fast check just set `const isLogged = true;` in this test.
 
+## Or
+
+Build the docker image with `npx nx docker-build nba-node`.
+
+Tip: Modify "docker-build" options in project.json to change docker build args.
+
+Run the container with `docker run -p 3000:3000 -t nba-node`.
+
 ## Struct
 
 - framework - core

@@ -3,8 +3,8 @@ import {
   Restart,
   Start,
   Stop,
-} from '@./domain/match-simulation';
-import { Command } from '@./framework';
+} from '@nba-node/domain/match-simulation';
+import { Command } from '@nba-node/framework';
 import { SocketStream } from '@fastify/websocket';
 import { FastifyInstance, FastifyRequest, FastifyReply } from 'fastify';
 import { useInMemoryData } from './useInMemoryData';

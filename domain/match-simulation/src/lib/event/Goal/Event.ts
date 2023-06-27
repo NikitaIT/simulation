@@ -1,4 +1,4 @@
-import { BaseEvent } from '@./framework';
+import { BaseEvent } from '@nba-node/framework';
 
 export interface GoalData {
   matchId: string;

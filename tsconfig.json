@@ -15,9 +15,11 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@./domain/match-simulation": ["domain/match-simulation/src/index.ts"],
-      "@./framework": ["framework/src/index.ts"],
-      "@./utils": ["utils/src/index.ts"]
+      "@nba-node/domain/match-simulation": [
+        "domain/match-simulation/src/index.ts"
+      ],
+      "@nba-node/framework": ["framework/src/index.ts"],
+      "@nba-node/utils": ["utils/src/index.ts"]
     },
     "esModuleInterop": true
   },

@@ -1,6 +1,6 @@
 import { MatchSimulationJob } from '../../job/MatchSimulationJob';
 import { MatchSimulationsRepository } from '../../repository/MatchSimulationsRepository';
-import { BaseCommand, CommandHandler, Logger } from '@./framework';
+import { BaseCommand, CommandHandler, Logger } from '@nba-node/framework';
 import { Either, left } from '@sweet-monads/either';
 
 export interface StopArgs {

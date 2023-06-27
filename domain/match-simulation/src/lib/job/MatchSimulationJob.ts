@@ -1,7 +1,7 @@
 import { randomInt } from 'crypto';
-import { delay, timeout } from '@./utils';
+import { delay, timeout } from '@nba-node/utils';
 import { MatchSimulation } from '../entity';
-import { Logger } from '@./framework';
+import { Logger } from '@nba-node/framework';
 import { setMaxListeners } from 'node:events';
 export type MatchSimulationJobConfig = {
   intervalSec: number;

@@ -4,8 +4,8 @@ import websocketPlugin from '@fastify/websocket';
 import WebSocket from 'ws';
 import { Duplex } from 'node:stream';
 import route from './route';
-import { delay } from '@./utils';
-import { Start, Stop, Restart } from '@./domain/match-simulation';
+import { delay } from '@nba-node/utils';
+import { Start, Stop, Restart } from '@nba-node/domain/match-simulation';
 
 describe('Route E2E', () => {
   let fastify: FastifyInstance;

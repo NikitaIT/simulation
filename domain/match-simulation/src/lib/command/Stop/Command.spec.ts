@@ -1,7 +1,7 @@
 import { MatchSimulationJob } from '../../job/MatchSimulationJob';
 import { MatchSimulationsRepository } from '../../repository/MatchSimulationsRepository';
 import { Stop as Command } from './Command';
-import { FakeLogger } from '@./framework';
+import { FakeLogger } from '@nba-node/framework';
 import { Team, MatchSimulation } from '../../entity';
 describe('Given Restart', () => {
   it('Should be created', () => {

@@ -1,5 +1,5 @@
 import { Goal } from '../event';
-import { AggregateRoot } from '@./framework';
+import { AggregateRoot } from '@nba-node/framework';
 import { Team } from './Team';
 
 export class MatchSimulation extends AggregateRoot {

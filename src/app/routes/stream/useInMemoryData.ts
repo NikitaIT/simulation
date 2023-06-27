@@ -4,8 +4,8 @@ import {
   MatchSimulationsRepository,
   MatchSimulationJob,
   MatchSimulationJobConfig,
-} from '@./domain/match-simulation';
-import { Logger } from '@./framework';
+} from '@nba-node/domain/match-simulation';
+import { Logger } from '@nba-node/framework';
 
 export function useInMemoryData(
   logger: Logger,
