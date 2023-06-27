@@ -1,7 +1,7 @@
 import * as path from 'path';
 import { FastifyInstance } from 'fastify';
 import AutoLoad from '@fastify/autoload';
-
+import plugin from 'fastify-graceful-shutdown';
 /* eslint-disable-next-line */
 export interface AppOptions {}
 
@@ -25,5 +25,13 @@ export async function app(fastify: FastifyInstance, opts: AppOptions) {
     dir: path.join(__dirname, 'routes'),
     indexPattern: /.*route(\.ts|\.js|\.cjs|\.mjs)$/,
     options: { ...opts },
+  });
+
+  fastify.register(plugin);
+  fastify.after(() => {
+    fastify.gracefulShutdown((signal, next) => {
+      console.log('Shutdown!');
+      next();
+    });
   });
 }
