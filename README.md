@@ -1,5 +1,7 @@
 # Simulation
 
+P.S. It was probably worth generating the simulation at "start" and scheduling the dispatch of events with a delay specified in each event. Like `for ... { await delay(events[i].happenedAt - events[i + 1].happenedAt, send, events[i]); }` without any async simulation.
+
 1. Run `npx nx serve`. All tests: `nx run-many --all --target=test`.
 2. Open WS connection with `http://localhost:3000/stream`
 
