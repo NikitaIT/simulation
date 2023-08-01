@@ -49,7 +49,7 @@
     "@typescript-eslint/parser": "^5.58.0",
     "autocannon": "^7.11.0",
     "commitizen": "^4.3.0",
-    "esbuild": "^0.17.17",
+    "esbuild": "^0.18.17",
     "eslint": "~8.15.0",
     "eslint-config-prettier": "8.1.0",
     "hdr-histogram-js": "^3.0.0",
